@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gravity Correction</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>Gravity Correction</h1>
+    <form method="post" action="{% url 'gravity_correction' %}">
+        {% csrf_token %}
+        <label for="latitude">Latitude:</label>
+        <input type="text" name="latitude"><br><br>
+
+        <label for="elevation">Elevation:</label>
+        <input type="text" name="elevation"><br><br>
+
+        <label for="observed_gravity">Observed Gravity:</label>
+        <input type="text" name="observed_gravity"><br><br>
+
+        <label for="correction_type">Correction Type:</label>
+        <select name="correction_type">
+            <option value="free_air">Free-Air Correction</option>
+            <option value="bouguer">Bouguer Correction</option>
+            <option value="terrain">Terrain Correction</option>
+            <option value="eotvos">Eötvös Correction</option>
+            <option value="latitude">Latitude Correction</option>
+            <option value="igf">International Gravity Formula (IGF)</option>
+        </select><br><br>
+
+        <input type="submit" value="Calculate">
+    </form>
+</body>
+</html>
